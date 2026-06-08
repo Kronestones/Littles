@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <meta name="theme-color" content="#fff9f0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <meta name="description" content="Siss Littles — Family safety network."/>
+  <title>Siss — Littles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --sun:        #FFB800;
+      --sun-light:  #FFD95A;
+      --sun-glow:   rgba(255,184,0,.18);
+      --sky:        #4FC3F7;
+      --sky-light:  #B3E5FC;
+      --sky-glow:   rgba(79,195,247,.18);
+      --coral:      #FF6B6B;
+      --coral-light:#FFB3B3;
+      --coral-glow: rgba(255,107,107,.18);
+      --green:      #56C596;
+      --green-light:#B2DFCB;
+      --green-glow: rgba(86,197,150,.18);
+      --bg:         #fff9f0;
+      --bg2:        #fff3e0;
+      --white:      #ffffff;
+      --text:       #3a2a1a;
+      --text-dim:   #8a7060;
+      --border:     #f0d8b8;
+      --border2:    #e0c090;
+      --shadow:     rgba(58,42,26,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ── PAGES ── */
+    .page { display: none; min-height: 100vh; flex-direction: column; }
+    .page.active { display: flex; }
+
+    /* ══════════════════════════════════════════
+       AGREEMENT GATE
+    ══════════════════════════════════════════ */
+    #page-agree {
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      background: linear-gradient(160deg, #fff9f0 0%, #fff3e0 100%);
+    }
+
+    .agree-logo-wrap {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .agree-siss {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 8px;
+      color: var(--coral);
+      display: block;
+    }
+
+    .agree-littles {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--sun);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .agree-box {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 20px;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 4px 24px var(--shadow);
+    }
+
+    .agree-title {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .agree-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+    }
+
+    .agree-body strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .agree-body .point {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+
+    .agree-body .point-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .agree-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--coral);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+      box-shadow: 0 4px 16px var(--coral-glow);
+    }
+
+    .agree-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px var(--coral-glow); }
+    .agree-btn:active { transform: scale(.98); }
+
+    .agree-decline {
+      display: block;
+      text-align: center;
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* ══════════════════════════════════════════
+       AUTH PAGE
+    ══════════════════════════════════════════ */
+    #page-auth {
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      background: linear-gradient(160deg, #fff9f0 0%, #fff3e0 100%);
+    }
+
+    .auth-logo-wrap {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .auth-siss {
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 10px;
+      color: var(--coral);
+      text-shadow: 0 0 40px var(--coral-glow);
+      display: block;
+    }
+
+    .auth-littles {
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--sun);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .auth-tagline {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--text-dim);
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    .auth-tabs {
+      display: flex;
+      width: 100%;
+      max-width: 340px;
+      margin-bottom: 20px;
+      background: var(--bg2);
+      border-radius: 10px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: 10px;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      color: var(--text-dim);
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .auth-tab.active {
+      background: var(--white);
+      color: var(--coral);
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .auth-form {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .auth-form.active { display: flex; }
+
+    .auth-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .auth-input:focus { border-color: var(--sky); box-shadow: 0 0 0 3px var(--sky-glow); }
+    .auth-input::placeholder { color: var(--text-dim); }
+
+    .auth-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--coral);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+      box-shadow: 0 4px 16px var(--coral-glow);
+      margin-top: 4px;
+    }
+
+    .auth-btn:hover { transform: translateY(-1px); }
+    .auth-btn:active { transform: scale(.98); }
+    .auth-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+    .auth-msg {
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      min-height: 18px;
+      letter-spacing: .5px;
+    }
+    .auth-msg.error { color: var(--coral); }
+    .auth-msg.success { color: var(--green); }
+
+    .auth-note {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: center;
+      line-height: 1.7;
+      margin-top: 8px;
+      max-width: 300px;
+    }
+
+    /* ══════════════════════════════════════════
+       CHILD VIEW — Full screen SOS
+    ══════════════════════════════════════════ */
+    #page-child {
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #fff9f0 0%, #fff3e0 100%);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .child-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      padding: 20px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .child-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--coral);
+    }
+
+    .child-logo span {
+      font-family: 'Nunito', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: var(--sun);
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* Parent PIN lock */
+    .parent-lock {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg2);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all .2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .parent-lock:active { transform: scale(.9); }
+
+    /* SOS button area */
+    .sos-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .sos-label {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* The big button */
+    .sos-ring-wrap {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sos-progress-ring {
+      position: absolute;
+      top: 0; left: 0;
+      transform: rotate(-90deg);
+      pointer-events: none;
+    }
+
+    .sos-progress-circle {
+      fill: none;
+      stroke: var(--coral);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 628;
+      stroke-dashoffset: 628;
+      transition: stroke-dashoffset .05s linear;
+      filter: drop-shadow(0 0 8px var(--coral-glow));
+    }
+
+    .sos-btn {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: var(--coral);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow:
+        0 0 0 12px var(--coral-light),
+        0 0 0 20px rgba(255,107,107,.12),
+        0 8px 32px rgba(255,107,107,.4);
+      transition: transform .1s, box-shadow .1s;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sos-btn:active, .sos-btn.holding {
+      transform: scale(.96);
+      box-shadow:
+        0 0 0 8px var(--coral-light),
+        0 0 0 14px rgba(255,107,107,.15),
+        0 4px 20px rgba(255,107,107,.5);
+    }
+
+    .sos-btn-icon {
+      font-size: 48px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .sos-btn-text {
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: white;
+      pointer-events: none;
+    }
+
+    .sos-hint {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dim);
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 1.7;
+    }
+
+    /* After ping sent */
+    .safe-btn {
+      padding: 16px 40px;
+      background: var(--green);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 20px var(--green-glow);
+      transition: all .2s;
+      display: none;
+    }
+
+    .safe-btn.visible { display: block; }
+    .safe-btn:active { transform: scale(.97); }
+
+    .ping-sent-msg {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--coral);
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 1.7;
+      display: none;
+      max-width: 260px;
+    }
+    .ping-sent-msg.visible { display: block; }
+
+    /* Flash overlay for deaf users */
+    .flash-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--coral);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 999;
+      transition: opacity .1s;
+    }
+    .flash-overlay.flash { animation: flashAnim .6s ease forwards; }
+    @keyframes flashAnim {
+      0%   { opacity: .7; }
+      100% { opacity: 0; }
+    }
+
+    /* ══════════════════════════════════════════
+       PIN MODAL
+    ══════════════════════════════════════════ */
+    .pin-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(58,42,26,.5);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .pin-modal.open { display: flex; }
+
+    .pin-box {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 24px;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 8px 40px var(--shadow);
+      text-align: center;
+    }
+
+    .pin-title {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .pin-sub {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      letter-spacing: .5px;
+    }
+
+    .pin-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .pin-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--border2);
+      background: transparent;
+      transition: all .15s;
+    }
+    .pin-dot.filled { background: var(--coral); border-color: var(--coral); }
+
+    .pin-pad {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .pin-key {
+      padding: 14px;
+      background: var(--bg2);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      transition: all .15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .pin-key:active { background: var(--coral); color: white; border-color: var(--coral); transform: scale(.94); }
+    .pin-key.del { font-size: 16px; }
+    .pin-key.empty { background: transparent; border-color: transparent; cursor: default; }
+
+    .pin-msg {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--coral);
+      min-height: 18px;
+      letter-spacing: .5px;
+    }
+
+    .pin-cancel {
+      display: block;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dim);
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ══════════════════════════════════════════
+       PARENT DASHBOARD
+    ══════════════════════════════════════════ */
+    #page-parent {
+      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
+      width: 100%;
+      background: var(--bg);
+      min-height: 100vh;
+    }
+
+    .parent-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 20px 14px;
+      border-bottom: 2px solid var(--border);
+      background: var(--white);
+    }
+
+    .parent-logo { }
+    .parent-logo .siss-name {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--coral);
+    }
+    .parent-logo .littles-name {
+      font-family: 'Nunito', sans-serif;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--sun);
+      margin-top: 1px;
+    }
+
+    .parent-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .hdr-btn {
+      padding: 7px 12px;
+      background: var(--bg2);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .hdr-btn:hover { border-color: var(--coral); color: var(--coral); }
+
+    /* Status bar */
+    #status-bar {
+      display: none;
+      padding: 10px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-align: center;
+    }
+    #status-bar.error { background: var(--coral-light); color: var(--coral); display: block; }
+    #status-bar.success { background: var(--green-light); color: var(--green); display: block; }
+
+    /* Nav tabs */
+    .parent-nav {
+      display: flex;
+      background: var(--white);
+      border-bottom: 2px solid var(--border);
+      padding: 0 8px;
+    }
+
+    .nav-tab {
+      flex: 1;
+      padding: 12px 4px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-family: 'Nunito', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: all .2s;
+      margin-bottom: -2px;
+    }
+    .nav-tab.active { color: var(--coral); border-bottom-color: var(--coral); }
+
+    /* Tab content */
+    .tab-content { display: none; flex: 1; overflow-y: auto; padding: 20px; }
+    .tab-content.active { display: block; }
+
+    /* Section headers */
+    .section-label {
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      margin-top: 24px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    /* Cards */
+    .card {
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: .5px;
+      line-height: 1.6;
+    }
+
+    /* Family member list */
+    .member-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .member-row:last-child { border-bottom: none; }
+
+    .member-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .member-avatar.parent-av { background: var(--sun-light); }
+    .member-avatar.child-av  { background: var(--sky-light); }
+
+    .member-info { flex: 1; }
+    .member-name { font-size: 13px; font-weight: 800; color: var(--text); }
+    .member-role { font-size: 10px; font-weight: 700; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+    .member-status {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+    .member-status.offline { background: var(--border2); }
+
+    /* Invite code */
+    .invite-code-box {
+      background: var(--bg2);
+      border: 2px dashed var(--border2);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .invite-code {
+      font-family: 'Nunito', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 8px;
+      color: var(--coral);
+      margin-bottom: 6px;
+    }
+
+    .invite-expires {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+
+    /* Alerts tab */
+    .alert-card {
+      background: var(--white);
+      border: 2px solid var(--coral-light);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 12px var(--coral-glow);
+    }
+
+    .alert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .alert-name { font-size: 14px; font-weight: 900; color: var(--coral); }
+    .alert-time { font-size: 10px; color: var(--text-dim); letter-spacing: .5px; }
+
+    .alert-context { font-size: 12px; color: var(--text); line-height: 1.6; margin-bottom: 12px; }
+
+    .alert-respond-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--coral);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .alert-respond-btn:active { transform: scale(.97); }
+
+    /* Toggle / opt-in */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+
+    .toggle-label { flex: 1; padding-right: 16px; }
+    .toggle-label-text { font-size: 13px; font-weight: 800; color: var(--text); }
+    .toggle-label-sub { font-size: 11px; color: var(--text-dim); line-height: 1.5; margin-top: 2px; }
+
+    .toggle {
+      position: relative;
+      width: 46px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: var(--border);
+      border-radius: 13px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .toggle input:checked + .toggle-track { background: var(--green); }
+    .toggle-track::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 3px;
+      top: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: transform .2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+    }
+    .toggle input:checked + .toggle-track::before { transform: translateX(20px); }
+
+    /* Big action buttons */
+    .big-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+      margin-bottom: 10px;
+    }
+    .big-btn.primary { background: var(--coral); color: white; box-shadow: 0 4px 16px var(--coral-glow); }
+    .big-btn.secondary { background: var(--bg2); color: var(--text); border: 2px solid var(--border); }
+    .big-btn.sky { background: var(--sky); color: white; box-shadow: 0 4px 16px var(--sky-glow); }
+    .big-btn:active { transform: scale(.98); }
+
+    /* Empty states */
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-dim);
+    }
+    .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-state .empty-text { font-size: 13px; font-weight: 700; letter-spacing: .5px; line-height: 1.7; }
+
+    /* Accessibility: visually hidden but screen-reader visible */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Pulse animation for active alert */
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 var(--coral-glow); }
+      50%       { box-shadow: 0 0 0 12px rgba(255,107,107,0); }
+    }
+    .alert-card { animation: pulse 2s infinite; }
+
+    /* Countdown ring animation */
+    @keyframes ringGrow {
+      from { stroke-dashoffset: 628; }
+      to   { stroke-dashoffset: 0; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Flash overlay for deaf accessibility -->
+<div class="flash-overlay" id="flash-overlay" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 1: AGREEMENT GATE
+══════════════════════════════════════════════════════ -->
+<div class="page active" id="page-agree" role="main" aria-label="Terms of Service Agreement">
+  <div class="agree-logo-wrap">
+    <span class="agree-siss" aria-label="Siss">SISS</span>
+    <span class="agree-littles">Littles</span>
+  </div>
+
+  <div class="agree-box" role="region" aria-label="Terms you must agree to">
+    <div class="agree-title">Before You Continue</div>
+    <div class="agree-body">
+      <div class="point">
+        <span class="point-icon" aria-hidden="true">🆘</span>
+        <div><strong>Always call 911 first.</strong> Siss Littles is a communication tool — not an emergency service. In any real emergency, call 911 immediately.</div>
+      </div>
+      <div class="point">
+        <span class="point-icon" aria-hidden="true">👨‍👩‍👧</span>
+        <div><strong>Parents are fully responsible</strong> for their child's use of this app, including any distress pings sent — real or accidental.</div>
+      </div>
+      <div class="point">
+        <span class="point-icon" aria-hidden="true">📡</span>
+        <div><strong>We relay communication only.</strong> Siss Littles cannot guarantee a response from family members or the Siss network.</div>
+      </div>
+      <div class="point">
+        <span class="point-icon" aria-hidden="true">⚖️</span>
+        <div><strong>False pings are the parent's liability.</strong> By agreeing, you accept full responsibility for misuse.</div>
+      </div>
+    </div>
+    <button class="agree-btn" id="agree-btn" onclick="agreeAndContinue()" aria-label="I understand and agree to the terms">
+      I Understand & Agree
+    </button>
+    <span class="agree-decline" onclick="declineTerms()" role="button" tabindex="0" aria-label="Decline and exit">
+      I do not agree — exit
+    </span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 2: AUTH (Parent login/register)
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-auth" role="main" aria-label="Sign in or create account">
+  <div class="auth-logo-wrap">
+    <span class="auth-siss" aria-label="Siss">SISS</span>
+    <span class="auth-littles">Littles</span>
+    <div class="auth-tagline">Family safety network</div>
+  </div>
+
+  <div class="auth-tabs" role="tablist" aria-label="Login or Register">
+    <button class="auth-tab active" id="tab-login-btn" role="tab" aria-selected="true" onclick="switchAuthTab('login')">Log In</button>
+    <button class="auth-tab" id="tab-register-btn" role="tab" aria-selected="false" onclick="switchAuthTab('register')">Register</button>
+  </div>
+
+  <!-- Login -->
+  <div class="auth-form active" id="form-login" role="tabpanel" aria-labelledby="tab-login-btn">
+    <input class="auth-input" id="login-username" type="text" placeholder="Username" autocomplete="username" aria-label="Username" autocapitalize="none"/>
+    <input class="auth-input" id="login-password" type="password" placeholder="Password" autocomplete="current-password" aria-label="Password"/>
+    <button class="auth-btn" id="login-btn" onclick="doLogin()" aria-label="Log in to your account">Log In</button>
+    <div class="auth-msg" id="login-msg" role="alert" aria-live="polite"></div>
+  </div>
+
+  <!-- Register -->
+  <div class="auth-form" id="form-register" role="tabpanel" aria-labelledby="tab-register-btn">
+    <input class="auth-input" id="reg-username" type="text" placeholder="Choose a username" autocomplete="username" aria-label="Choose a username" autocapitalize="none"/>
+    <input class="auth-input" id="reg-email" type="email" placeholder="Email address" autocomplete="email" aria-label="Email address"/>
+    <input class="auth-input" id="reg-display" type="text" placeholder="Your name (e.g. Mom)" autocomplete="name" aria-label="Your display name"/>
+    <input class="auth-input" id="reg-password" type="password" placeholder="Password (8+ characters)" autocomplete="new-password" aria-label="Choose a password"/>
+    <input class="auth-input" id="reg-pin" type="password" placeholder="4-digit parent PIN" maxlength="4" inputmode="numeric" aria-label="Choose a 4-digit parent PIN"/>
+    <button class="auth-btn" id="reg-btn" onclick="doRegister()" aria-label="Create your account">Create Account</button>
+    <div class="auth-msg" id="reg-msg" role="alert" aria-live="polite"></div>
+  </div>
+
+  <p class="auth-note">This account is for parents and guardians. Your child's device uses a simple family code.</p>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 3: CHILD VIEW
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-child" role="main" aria-label="Child safety screen">
+
+  <div class="child-top">
+    <div class="child-logo">
+      SISS
+      <span>Littles</span>
+    </div>
+    <button class="parent-lock" onclick="openPinModal()" aria-label="Parent access — enter PIN" title="Parent access">
+      🔒
+    </button>
+  </div>
+
+  <div class="sos-wrap">
+    <!-- Pre-ping state -->
+    <div id="sos-pre">
+      <div class="sos-label" id="sos-label-text">Hold for Help</div>
+
+      <div class="sos-ring-wrap" aria-hidden="true">
+        <svg class="sos-progress-ring" width="220" height="220" viewBox="0 0 220 220" aria-hidden="true">
+          <circle class="sos-progress-circle" id="sos-ring" cx="110" cy="110" r="100"/>
+        </svg>
+
+        <button
+          class="sos-btn"
+          id="sos-btn"
+          aria-label="SOS — hold for 3 seconds to send distress signal to your family"
+          aria-describedby="sos-hint"
+          role="button"
+        >
+          <span class="sos-btn-icon" aria-hidden="true">🆘</span>
+          <span class="sos-btn-text">SOS</span>
+        </button>
+      </div>
+
+      <p class="sos-hint" id="sos-hint">
+        Hold the button for 3 seconds<br/>
+        <strong>Tap 3 times anywhere</strong> if you can't see the button
+      </p>
+    </div>
+
+    <!-- Post-ping state -->
+    <div id="sos-post" style="display:none; text-align:center;">
+      <div class="ping-sent-msg visible" id="ping-sent-msg" role="alert" aria-live="assertive">
+        📡 Your family has been notified.<br/>
+        <strong>Call 911 if this is an emergency.</strong>
+      </div>
+      <br/><br/>
+      <button class="safe-btn visible" id="safe-btn" onclick="markSafe()" aria-label="I am safe — cancel the alert">
+        ✅ I'm Safe
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE 4: PARENT DASHBOARD
+══════════════════════════════════════════════════════ -->
+<div class="page" id="page-parent" role="main" aria-label="Parent dashboard">
+
+  <div class="parent-header">
+    <div class="parent-logo">
+      <div class="siss-name">SISS</div>
+      <div class="littles-name">Littles</div>
+    </div>
+    <div class="parent-actions">
+      <button class="hdr-btn" onclick="lockToChild()" aria-label="Return to child view">Child View</button>
+      <button class="hdr-btn" onclick="doLogout()" aria-label="Log out">Log Out</button>
+    </div>
+  </div>
+
+  <div id="status-bar" role="alert" aria-live="polite"></div>
+
+  <nav class="parent-nav" role="tablist" aria-label="Dashboard sections">
+    <button class="nav-tab active" role="tab" aria-selected="true"  onclick="switchTab('family')"  id="ptab-family">Family</button>
+    <button class="nav-tab"        role="tab" aria-selected="false" onclick="switchTab('alerts')"  id="ptab-alerts">Alerts</button>
+    <button class="nav-tab"        role="tab" aria-selected="false" onclick="switchTab('invite')"  id="ptab-invite">Invite</button>
+    <button class="nav-tab"        role="tab" aria-selected="false" onclick="switchTab('settings')" id="ptab-settings">Settings</button>
+  </nav>
+
+  <!-- FAMILY TAB -->
+  <div class="tab-content active" id="tab-family" role="tabpanel" aria-labelledby="ptab-family">
+    <div class="section-label">Your Family</div>
+    <div class="card" id="family-members-card">
+      <div id="family-members-list">
+        <!-- Populated by JS -->
+        <div class="empty-state">
+          <div class="empty-icon">👨‍👩‍👧</div>
+          <div class="empty-text">No members yet.<br/>Use the Invite tab to add family members.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Your Family Code</div>
+    <div class="card">
+      <div class="card-sub">Share this code with family members so they can join on their device.</div>
+      <div class="invite-code-box">
+        <div class="invite-code" id="family-code" aria-label="Family invite code">——</div>
+        <div class="invite-expires" id="family-code-sub">Generate a code in the Invite tab</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALERTS TAB -->
+  <div class="tab-content" id="tab-alerts" role="tabpanel" aria-labelledby="ptab-alerts">
+    <div class="section-label">Active Alerts</div>
+    <div id="alerts-list">
+      <div class="empty-state">
+        <div class="empty-icon">🟢</div>
+        <div class="empty-text">No active alerts.<br/>Your family is safe.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVITE TAB -->
+  <div class="tab-content" id="tab-invite" role="tabpanel" aria-labelledby="ptab-invite">
+    <div class="section-label">Add Family Members</div>
+    <div class="card">
+      <div class="card-title">Generate Invite Code</div>
+      <div class="card-sub">Each code can be used once. Share only with people you trust.</div>
+      <br/>
+      <button class="big-btn primary" onclick="generateInvite()" id="gen-invite-btn" aria-label="Generate a new invite code">
+        Generate Code
+      </button>
+      <div id="new-code-display" style="display:none;">
+        <div class="invite-code-box">
+          <div class="invite-code" id="new-code-text" aria-label="New invite code" aria-live="polite"></div>
+          <div class="invite-expires">Valid for 48 hours · Single use</div>
+        </div>
+        <br/>
+        <button class="big-btn secondary" onclick="copyInviteCode()" aria-label="Copy invite code to clipboard">📋 Copy Code</button>
+      </div>
+    </div>
+
+    <div class="section-label">Invited Members</div>
+    <div class="card" id="invite-tree-card">
+      <div class="empty-state" style="padding:20px;">
+        <div class="empty-text">No members invited yet.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS TAB -->
+  <div class="tab-content" id="tab-settings" role="tabpanel" aria-labelledby="ptab-settings">
+    <div class="section-label">Safety Network</div>
+    <div class="card">
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-label-text">Allow Siss Network Alerts</div>
+          <div class="toggle-label-sub">If your child sends a distress ping, nearby Sisters within 2 miles may also be notified.</div>
+        </div>
+        <label class="toggle" aria-label="Allow Siss network to be notified of child distress pings">
+          <input type="checkbox" id="toggle-siss" onchange="saveSetting('siss_network', this.checked)"/>
+          <div class="toggle-track"></div>
+        </label>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-label-text">Check-In Reminders</div>
+          <div class="toggle-label-sub">Remind your child to tap "I'm Home Safe" when they arrive somewhere.</div>
+        </div>
+        <label class="toggle" aria-label="Enable check-in reminders">
+          <input type="checkbox" id="toggle-checkin" onchange="saveSetting('checkin_reminders', this.checked)"/>
+          <div class="toggle-track"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="section-label">Accessibility</div>
+    <div class="card">
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-label-text">Voice Confirmation</div>
+          <div class="toggle-label-sub">Speak aloud when a ping is sent or received. For blind users.</div>
+        </div>
+        <label class="toggle" aria-label="Enable voice confirmation for blind users">
+          <input type="checkbox" id="toggle-voice" checked onchange="saveSetting('voice', this.checked)"/>
+          <div class="toggle-track"></div>
+        </label>
+      </div>
+      <div class="toggle-row">
+        <div class="toggle-label">
+          <div class="toggle-label-text">Screen Flash Alerts</div>
+          <div class="toggle-label-sub">Flash the screen when a ping fires. For deaf users.</div>
+        </div>
+        <label class="toggle" aria-label="Enable screen flash for deaf users">
+          <input type="checkbox" id="toggle-flash" checked onchange="saveSetting('flash', this.checked)"/>
+          <div class="toggle-track"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="section-label">Account</div>
+    <div class="card">
+      <div class="card-sub" id="settings-username" style="margin-bottom:14px;font-weight:700;"></div>
+      <button class="big-btn secondary" onclick="changePinFlow()" aria-label="Change your parent PIN">🔑 Change Parent PIN</button>
+      <button class="big-btn secondary" style="color:var(--coral);border-color:var(--coral-light);" onclick="doLogout()" aria-label="Log out of your account">Log Out</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PIN MODAL
+══════════════════════════════════════════════════════ -->
+<div class="pin-modal" id="pin-modal" role="dialog" aria-modal="true" aria-label="Parent PIN entry">
+  <div class="pin-box">
+    <div class="pin-title" id="pin-modal-title">Parent Access</div>
+    <div class="pin-sub" id="pin-modal-sub">Enter your 4-digit PIN</div>
+
+    <div class="pin-dots" aria-hidden="true">
+      <div class="pin-dot" id="dot-0"></div>
+      <div class="pin-dot" id="dot-1"></div>
+      <div class="pin-dot" id="dot-2"></div>
+      <div class="pin-dot" id="dot-3"></div>
+    </div>
+
+    <div class="pin-pad" role="group" aria-label="PIN keypad">
+      <button class="pin-key" onclick="pinKey('1')" aria-label="1">1</button>
+      <button class="pin-key" onclick="pinKey('2')" aria-label="2">2</button>
+      <button class="pin-key" onclick="pinKey('3')" aria-label="3">3</button>
+      <button class="pin-key" onclick="pinKey('4')" aria-label="4">4</button>
+      <button class="pin-key" onclick="pinKey('5')" aria-label="5">5</button>
+      <button class="pin-key" onclick="pinKey('6')" aria-label="6">6</button>
+      <button class="pin-key" onclick="pinKey('7')" aria-label="7">7</button>
+      <button class="pin-key" onclick="pinKey('8')" aria-label="8">8</button>
+      <button class="pin-key" onclick="pinKey('9')" aria-label="9">9</button>
+      <button class="pin-key empty" aria-hidden="true"></button>
+      <button class="pin-key" onclick="pinKey('0')" aria-label="0">0</button>
+      <button class="pin-key del" onclick="pinDel()" aria-label="Delete last digit">⌫</button>
+    </div>
+
+    <div class="pin-msg" id="pin-msg" role="alert" aria-live="polite"></div>
+    <button class="pin-cancel" onclick="closePinModal()" aria-label="Cancel PIN entry">Cancel</button>
+  </div>
+</div>
+
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════════════════════════════════════════
+
+const API = '/littles/api';  // update to match your Flask blueprint prefix
+
+// ══════════════════════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════════════════════
+
+const S = {
+  token:        null,
+  username:     null,
+  display_name: null,
+  agreed_at:    null,
+  settings: {
+    voice: true,
+    flash: true,
+    siss_network: false,
+    checkin_reminders: false,
+  },
+  pin: null,           // stored locally only (never sent to server)
+  active_ping_id: null,
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════════════════════
+
+(function init() {
+  // Restore session
+  try {
+    const saved = JSON.parse(localStorage.getItem('siss_littles') || '{}');
+    if (saved.token)    S.token = saved.token;
+    if (saved.username) S.username = saved.username;
+    if (saved.display_name) S.display_name = saved.display_name;
+    if (saved.agreed_at)    S.agreed_at = saved.agreed_at;
+    if (saved.settings) Object.assign(S.settings, saved.settings);
+    if (saved.pin)      S.pin = saved.pin;
+  } catch(e) {}
+
+  // Route to correct page
+  if (!S.agreed_at) {
+    showPage('page-agree');
+  } else if (!S.token) {
+    showPage('page-auth');
+  } else {
+    // Default to child view after login
+    showPage('page-child');
+    applySettings();
+  }
+
+  // Triple-tap anywhere = SOS (accessibility for blind users)
+  let tapCount = 0, tapTimer = null;
+  document.addEventListener('touchend', function(e) {
+    // Only on child page, only if no ping active
+    if (!document.getElementById('page-child').classList.contains('active')) return;
+    if (S.active_ping_id) return;
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => { tapCount = 0; }, 600);
+    if (tapCount >= 3) {
+      tapCount = 0;
+      startSOS();
+    }
+  });
+})();
+
+function saveSession() {
+  try {
+    localStorage.setItem('siss_littles', JSON.stringify({
+      token:        S.token,
+      username:     S.username,
+      display_name: S.display_name,
+      agreed_at:    S.agreed_at,
+      settings:     S.settings,
+      pin:          S.pin,
+    }));
+  } catch(e) {}
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PAGE ROUTING
+// ══════════════════════════════════════════════════════════════════════════════
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  // Announce to screen readers
+  const page = document.getElementById(id);
+  const label = page.getAttribute('aria-label') || '';
+  if (label) speak(label, true);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// AGREEMENT
+// ══════════════════════════════════════════════════════════════════════════════
+
+function agreeAndContinue() {
+  S.agreed_at = new Date().toISOString();
+  saveSession();
+  // TODO: POST agreed_at to server for logging
+  showPage('page-auth');
+}
+
+function declineTerms() {
+  alert('You must agree to the terms to use Siss Littles. The app will now close.');
+  // On mobile this can't truly close, but communicates intent
+  document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Nunito,sans-serif;color:#8a7060;font-size:14px;text-align:center;padding:24px;">You have declined the terms of service.<br/>Please close this app.</div>';
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// AUTH
+// ══════════════════════════════════════════════════════════════════════════════
+
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+  if (tab === 'login') {
+    document.getElementById('tab-login-btn').classList.add('active');
+    document.getElementById('tab-login-btn').setAttribute('aria-selected','true');
+    document.getElementById('form-login').classList.add('active');
+  } else {
+    document.getElementById('tab-register-btn').classList.add('active');
+    document.getElementById('tab-register-btn').setAttribute('aria-selected','true');
+    document.getElementById('form-register').classList.add('active');
+  }
+}
+
+async function doLogin() {
+  const username = document.getElementById('login-username').value.trim();
+  const password = document.getElementById('login-password').value;
+  const msg = document.getElementById('login-msg');
+  const btn = document.getElementById('login-btn');
+
+  if (!username || !password) { setMsg(msg, 'Please fill in all fields.', 'error'); return; }
+
+  btn.disabled = true; btn.textContent = 'Logging in…';
+  try {
+    const r = await fetch(`${API}/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password }),
+    });
+    const d = await r.json();
+    if (d.ok) {
+      S.token        = d.token;
+      S.username     = d.username;
+      S.display_name = d.display_name;
+      if (d.pin_hash) S.pin = d.pin_hash; // server returns hashed pin
+      saveSession();
+      applySettings();
+      showPage('page-child');
+    } else {
+      setMsg(msg, d.error || 'Login failed.', 'error');
+    }
+  } catch(e) {
+    setMsg(msg, 'Connection error.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Log In';
+  }
+}
+
+async function doRegister() {
+  const username     = document.getElementById('reg-username').value.trim();
+  const email        = document.getElementById('reg-email').value.trim();
+  const display_name = document.getElementById('reg-display').value.trim();
+  const password     = document.getElementById('reg-password').value;
+  const pin          = document.getElementById('reg-pin').value.trim();
+  const msg = document.getElementById('reg-msg');
+  const btn = document.getElementById('reg-btn');
+
+  if (!username || !email || !display_name || !password || !pin) {
+    setMsg(msg, 'Please fill in all fields.', 'error'); return;
+  }
+  if (!/^\d{4}$/.test(pin)) {
+    setMsg(msg, 'PIN must be exactly 4 digits.', 'error'); return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Creating…';
+  try {
+    const r = await fetch(`${API}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, display_name, password, pin, agreed_at: S.agreed_at }),
+    });
+    const d = await r.json();
+    if (d.ok) {
+      setMsg(msg, 'Account created! Logging you in…', 'success');
+      S.pin = pin; // store locally
+      setTimeout(() => {
+        document.getElementById('login-username').value = username;
+        document.getElementById('login-password').value = password;
+        switchAuthTab('login');
+        doLogin();
+      }, 800);
+    } else {
+      setMsg(msg, d.error || 'Registration failed.', 'error');
+    }
+  } catch(e) {
+    setMsg(msg, 'Connection error.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Create Account';
+  }
+}
+
+function doLogout() {
+  S.token = null; S.username = null; S.display_name = null;
+  S.active_ping_id = null;
+  saveSession();
+  showPage('page-auth');
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SOS BUTTON — CHILD VIEW
+// ══════════════════════════════════════════════════════════════════════════════
+
+let holdTimer     = null;
+let holdInterval  = null;
+let holdProgress  = 0;
+const HOLD_MS     = 3000;
+const RING_CIRCUMFERENCE = 628; // 2πr where r=100
+
+const sosBtn  = document.getElementById('sos-btn');
+const sosRing = document.getElementById('sos-ring');
+
+function updateRing(progress) {
+  // progress 0–1
+  const offset = RING_CIRCUMFERENCE * (1 - progress);
+  sosRing.style.strokeDashoffset = offset;
+}
+
+function startHold() {
+  if (S.active_ping_id) return;
+  sosBtn.classList.add('holding');
+  vibrate([50]);
+  holdProgress = 0;
+  const startTime = Date.now();
+
+  holdInterval = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    holdProgress = Math.min(elapsed / HOLD_MS, 1);
+    updateRing(holdProgress);
+    if (holdProgress >= 1) {
+      clearInterval(holdInterval);
+      holdInterval = null;
+      startSOS();
+    }
+  }, 30);
+}
+
+function cancelHold() {
+  if (holdInterval) { clearInterval(holdInterval); holdInterval = null; }
+  sosBtn.classList.remove('holding');
+  holdProgress = 0;
+  updateRing(0);
+}
+
+// Touch events
+sosBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startHold(); }, { passive: false });
+sosBtn.addEventListener('touchend',   (e) => { e.preventDefault(); cancelHold(); });
+sosBtn.addEventListener('touchcancel',(e) => { cancelHold(); });
+// Mouse events (desktop testing)
+sosBtn.addEventListener('mousedown',  (e) => { startHold(); });
+sosBtn.addEventListener('mouseup',    (e) => { cancelHold(); });
+sosBtn.addEventListener('mouseleave', (e) => { cancelHold(); });
+// Keyboard
+sosBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') startHold(); });
+sosBtn.addEventListener('keyup',   (e) => { if (e.key === 'Enter' || e.key === ' ') cancelHold(); });
+
+async function startSOS() {
+  sosBtn.classList.remove('holding');
+  updateRing(1);
+  vibrate([100, 50, 100, 50, 200]);
+
+  // Flash for deaf users
+  if (S.settings.flash) flashScreen();
+
+  // Speak for blind users
+  if (S.settings.voice) speak('SOS sent. Your family has been notified. Call 911 if this is an emergency.');
+
+  // Show post-ping UI
+  document.getElementById('sos-pre').style.display = 'none';
+  document.getElementById('sos-post').style.display = 'block';
+
+  // Get location and send ping
+  if (!S.token) return; // demo mode
+  try {
+    const pos = await getLocation();
+    const r = await fetch(`${API}/ping`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${S.token}`,
+      },
+      body: JSON.stringify({
+        lat: pos.lat,
+        lng: pos.lng,
+        accuracy_meters: pos.accuracy,
+      }),
+    });
+    const d = await r.json();
+    if (d.ok) S.active_ping_id = d.ping_id;
+  } catch(e) {
+    // Still show UI — location may have failed but family was notified
+    console.error('SOS send error:', e);
+  }
+}
+
+async function markSafe() {
+  vibrate([50, 30, 100]);
+  if (S.settings.voice) speak('You are marked safe. Your family has been notified.');
+  if (S.settings.flash) flashScreenGreen();
+
+  // Reset UI
+  document.getElementById('sos-pre').style.display = 'block';
+  document.getElementById('sos-post').style.display = 'none';
+  updateRing(0);
+
+  if (!S.token || !S.active_ping_id) return;
+  try {
+    await fetch(`${API}/ping/resolve`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${S.token}`,
+      },
+      body: JSON.stringify({ ping_id: S.active_ping_id }),
+    });
+  } catch(e) {}
+  S.active_ping_id = null;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PIN MODAL
+// ══════════════════════════════════════════════════════════════════════════════
+
+let pinBuffer = '';
+let pinMode   = 'unlock'; // 'unlock' | 'set'
+
+function openPinModal(mode = 'unlock') {
+  pinBuffer = '';
+  pinMode   = mode;
+  updatePinDots();
+  document.getElementById('pin-msg').textContent = '';
+  document.getElementById('pin-modal-title').textContent = mode === 'set' ? 'Set Parent PIN' : 'Parent Access';
+  document.getElementById('pin-modal-sub').textContent   = mode === 'set' ? 'Choose a new 4-digit PIN' : 'Enter your 4-digit PIN';
+  document.getElementById('pin-modal').classList.add('open');
+  speak('Parent PIN required. Enter your 4 digit PIN.');
+}
+
+function closePinModal() {
+  document.getElementById('pin-modal').classList.remove('open');
+  pinBuffer = '';
+  updatePinDots();
+}
+
+function pinKey(digit) {
+  if (pinBuffer.length >= 4) return;
+  pinBuffer += digit;
+  updatePinDots();
+  vibrate([15]);
+  if (pinBuffer.length === 4) {
+    setTimeout(checkPin, 150);
+  }
+}
+
+function pinDel() {
+  pinBuffer = pinBuffer.slice(0, -1);
+  updatePinDots();
+  vibrate([10]);
+}
+
+function updatePinDots() {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    dot.classList.toggle('filled', i < pinBuffer.length);
+  }
+}
+
+function checkPin() {
+  if (pinMode === 'set') {
+    S.pin = pinBuffer;
+    saveSession();
+    document.getElementById('pin-msg').textContent = '';
+    closePinModal();
+    showStatus('PIN updated.', 'success');
+    return;
+  }
+
+  // Verify PIN locally
+  const storedPin = S.pin || '0000';
+  if (pinBuffer === storedPin) {
+    closePinModal();
+    enterParentMode();
+  } else {
+    pinBuffer = '';
+    updatePinDots();
+    document.getElementById('pin-msg').textContent = 'Incorrect PIN. Try again.';
+    vibrate([100, 50, 100]);
+    speak('Incorrect PIN.');
+  }
+}
+
+function enterParentMode() {
+  showPage('page-parent');
+  document.getElementById('settings-username').textContent = `Logged in as: ${S.username || '—'}`;
+  applySettings();
+  loadFamily();
+  loadAlerts();
+}
+
+function lockToChild() {
+  showPage('page-child');
+}
+
+function changePinFlow() {
+  openPinModal('set');
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PARENT DASHBOARD — TABS
+// ══════════════════════════════════════════════════════════════════════════════
+
+function switchTab(tab) {
+  document.querySelectorAll('.nav-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById(`ptab-${tab}`).classList.add('active');
+  document.getElementById(`ptab-${tab}`).setAttribute('aria-selected','true');
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  if (tab === 'alerts') loadAlerts();
+  if (tab === 'family') loadFamily();
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// FAMILY & INVITES
+// ══════════════════════════════════════════════════════════════════════════════
+
+async function loadFamily() {
+  if (!S.token) return;
+  try {
+    const r = await fetch(`${API}/family/members`, {
+      headers: { 'Authorization': `Bearer ${S.token}` }
+    });
+    const d = await r.json();
+    if (d.ok && d.members) renderFamily(d.members);
+    if (d.family_code) {
+      document.getElementById('family-code').textContent = d.family_code;
+      document.getElementById('family-code-sub').textContent = 'Share with family members';
+    }
+  } catch(e) {}
+}
+
+function renderFamily(members) {
+  const list = document.getElementById('family-members-list');
+  if (!members.length) {
+    list.innerHTML = `<div class="empty-state"><div class="empty-icon">👨‍👩‍👧</div><div class="empty-text">No members yet.<br/>Use the Invite tab to add family members.</div></div>`;
+    return;
+  }
+  list.innerHTML = members.map(m => `
+    <div class="member-row">
+      <div class="member-avatar ${m.role === 'parent' ? 'parent-av' : 'child-av'}" aria-hidden="true">
+        ${m.role === 'parent' ? '👨‍👩‍👧' : '🧒'}
+      </div>
+      <div class="member-info">
+        <div class="member-name">${esc(m.display_name)}</div>
+        <div class="member-role">${m.role}</div>
+      </div>
+      <div class="member-status ${m.online ? '' : 'offline'}" aria-label="${m.online ? 'Online' : 'Offline'}"></div>
+    </div>
+  `).join('');
+}
+
+let _lastInviteCode = null;
+
+async function generateInvite() {
+  if (!S.token) return;
+  const btn = document.getElementById('gen-invite-btn');
+  btn.disabled = true; btn.textContent = 'Generating…';
+  try {
+    const r = await fetch(`${API}/invite/generate`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${S.token}` },
+    });
+    const d = await r.json();
+    if (d.ok) {
+      _lastInviteCode = d.code;
+      document.getElementById('new-code-text').textContent = d.code;
+      document.getElementById('new-code-display').style.display = 'block';
+      speak(`Your invite code is ${d.code.split('').join(' ')}`);
+    } else {
+      showStatus(d.error || 'Could not generate code.', 'error');
+    }
+  } catch(e) {
+    showStatus('Connection error.', 'error');
+  } finally {
+    btn.disabled = false; btn.textContent = 'Generate Code';
+  }
+}
+
+function copyInviteCode() {
+  if (!_lastInviteCode) return;
+  navigator.clipboard.writeText(_lastInviteCode).then(() => {
+    showStatus('Code copied! Share it with a family member you trust.', 'success');
+  }).catch(() => {
+    showStatus('Copy failed — select the code manually.', 'error');
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// ALERTS
+// ══════════════════════════════════════════════════════════════════════════════
+
+async function loadAlerts() {
+  if (!S.token) return;
+  try {
+    const r = await fetch(`${API}/family/alerts`, {
+      headers: { 'Authorization': `Bearer ${S.token}` }
+    });
+    const d = await r.json();
+    if (d.ok) renderAlerts(d.alerts);
+  } catch(e) {}
+}
+
+function renderAlerts(alerts) {
+  const list = document.getElementById('alerts-list');
+  if (!alerts || !alerts.length) {
+    list.innerHTML = `<div class="empty-state"><div class="empty-icon">🟢</div><div class="empty-text">No active alerts.<br/>Your family is safe.</div></div>`;
+    return;
+  }
+  list.innerHTML = alerts.map(a => `
+    <div class="alert-card" role="alert" aria-label="Distress alert from ${esc(a.sender_name)}">
+      <div class="alert-header">
+        <div class="alert-name">🆘 ${esc(a.sender_name)}</div>
+        <div class="alert-time">${timeAgo(a.created_at)}</div>
+      </div>
+      <div class="alert-context">${a.context ? esc(a.context) : 'Distress ping sent. Check on them immediately.'}</div>
+      <button class="alert-respond-btn" onclick="respondToAlert('${a.ping_id}', ${a.lat}, ${a.lng})"
+        aria-label="I am responding to ${esc(a.sender_name)}'s alert">
+        I'm Responding
+      </button>
+    </div>
+  `).join('');
+
+  // Announce to parent
+  if (S.settings.voice) speak(`Alert: ${alerts[0].sender_name} needs help. Open the app immediately.`);
+  if (S.settings.flash) flashScreen();
+}
+
+async function respondToAlert(pingId, lat, lng) {
+  if (!S.token) return;
+  showResponderMap(lat, lng);
+  try {
+    const pos = await getLocation();
+    await fetch(`${API}/respond`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${S.token}`,
+      },
+      body: JSON.stringify({ ping_id: pingId, lat: pos.lat, lng: pos.lng }),
+    });
+  } catch(e) {}
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SETTINGS
+// ══════════════════════════════════════════════════════════════════════════════
+
+function applySettings() {
+  document.getElementById('toggle-voice').checked          = S.settings.voice;
+  document.getElementById('toggle-flash').checked          = S.settings.flash;
+  document.getElementById('toggle-siss').checked           = S.settings.siss_network;
+  document.getElementById('toggle-checkin').checked        = S.settings.checkin_reminders;
+}
+
+function saveSetting(key, value) {
+  S.settings[key] = value;
+  saveSession();
+  // TODO: POST to server
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// RESPONDER MAP
+// ══════════════════════════════════════════════════════════════════════════════
+
+function showResponderMap(lat, lng) {
+  const existing = document.getElementById('map-modal');
+  if (existing) existing.remove();
+
+  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
+
+  const modal = document.createElement('div');
+  modal.id = 'map-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-label', 'Navigate to child location');
+  modal.style.cssText = `position:fixed;inset:0;z-index:999;background:rgba(58,42,26,.96);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0;`;
+
+  modal.innerHTML = `
+    <div style="width:100%;padding:16px 20px;background:#fff;border-bottom:3px solid var(--coral);display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-family:Nunito,sans-serif;font-size:15px;font-weight:900;color:var(--coral);letter-spacing:1px;">🆘 They Need Help</div>
+      <button onclick="document.getElementById('map-modal').remove()" style="background:var(--bg2);border:2px solid var(--border);border-radius:8px;color:var(--text-dim);font-family:Nunito,sans-serif;font-size:11px;font-weight:800;padding:6px 12px;cursor:pointer;letter-spacing:1px;">CLOSE</button>
+    </div>
+    <div style="width:100%;flex:1;position:relative;">
+      <iframe width="100%" height="100%" style="border:none;display:block;" loading="lazy"
+        src="https://maps.google.com/maps?q=${lat},${lng}&z=16&output=embed&markers=color:red%7C${lat},${lng}">
+      </iframe>
+    </div>
+    <div style="width:100%;padding:16px 20px;background:#fff;border-top:3px solid var(--coral);display:flex;flex-direction:column;gap:10px;">
+      <a href="${mapsUrl}" target="_blank" style="display:block;width:100%;padding:15px;background:var(--coral);color:white;font-family:Nunito,sans-serif;font-size:13px;font-weight:900;letter-spacing:2px;text-transform:uppercase;text-align:center;text-decoration:none;border-radius:12px;box-sizing:border-box;">
+        🗺 Get Directions Now
+      </a>
+      <div style="font-size:11px;color:var(--text-dim);text-align:center;letter-spacing:.5px;line-height:1.8;font-weight:700;">
+        If you cannot reach them, call 911 and give them these coordinates:<br/>
+        <strong style="color:var(--text);">${parseFloat(lat).toFixed(4)}, ${parseFloat(lng).toFixed(4)}</strong>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// ACCESSIBILITY HELPERS
+// ══════════════════════════════════════════════════════════════════════════════
+
+function speak(text, interrupt = false) {
+  if (!S.settings.voice && !interrupt) return;
+  if (!('speechSynthesis' in window)) return;
+  if (interrupt) window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = 0.95;
+  u.pitch = 1;
+  window.speechSynthesis.speak(u);
+}
+
+function vibrate(pattern) {
+  if (navigator.vibrate) navigator.vibrate(pattern);
+}
+
+function flashScreen() {
+  const overlay = document.getElementById('flash-overlay');
+  overlay.style.background = 'var(--coral)';
+  overlay.classList.remove('flash');
+  void overlay.offsetWidth;
+  overlay.classList.add('flash');
+}
+
+function flashScreenGreen() {
+  const overlay = document.getElementById('flash-overlay');
+  overlay.style.background = 'var(--green)';
+  overlay.classList.remove('flash');
+  void overlay.offsetWidth;
+  overlay.classList.add('flash');
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// LOCATION
+// ══════════════════════════════════════════════════════════════════════════════
+
+function getLocation() {
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) { reject(new Error('No geolocation')); return; }
+    navigator.geolocation.getCurrentPosition(
+      pos => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy }),
+      err => reject(err),
+      { enableHighAccuracy: true, timeout: 8000 }
+    );
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// UI HELPERS
+// ══════════════════════════════════════════════════════════════════════════════
+
+function showStatus(msg, type) {
+  const bar = document.getElementById('status-bar');
+  bar.textContent = msg;
+  bar.className = type;
+  bar.style.display = 'block';
+  setTimeout(() => { bar.style.display = 'none'; }, 4000);
+}
+
+function setMsg(el, msg, type) {
+  el.textContent = msg;
+  el.className = `auth-msg ${type}`;
+}
+
+function timeAgo(isoStr) {
+  const diff = Math.floor((Date.now() - new Date(isoStr)) / 1000);
+  if (diff < 60)   return `${diff}s ago`;
+  if (diff < 3600) return `${Math.floor(diff/60)}m ago`;
+  return `${Math.floor(diff/3600)}h ago`;
+}
+
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+</script>
+</body>
+</html>
